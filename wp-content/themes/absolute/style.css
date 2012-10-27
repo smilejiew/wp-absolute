@@ -1,0 +1,285 @@
+/*
+  Theme Name: Absolute Kitchen
+  Description: Style for Absolute Kitchen
+  Author: Absolute Kitchen
+*/
+
+/* -------- style.css --------
+  Title:
+    Absolute Kitchen Main Style
+  Description:
+    This theme is for Absolute Kitchen website.
+-------------------------------- */
+/*
+  Swatches:
+    Colors
+      -
+-------------------------------- */
+/*
+  Index / Code Structure:
+
+  [A] Reset
+      See reset.css
+  --------------------------------
+  [B] Normalized Style for Rich Text Content
+      See wysiwyg.css
+  --------------------------------
+  [C] General
+    [C-1] Set up
+    --------------------------------
+    [C-2] Normal classes
+  --------------------------------
+  [D] Layout
+    [D-1] Tags / Types
+    --------------------------------
+    [D-2] Header
+    --------------------------------
+    [D-3] Footer
+    --------------------------------
+    [D-4] Content
+    --------------------------------
+      [D-4-01] Panels
+      [D-4-02] Logo
+      [D-4-03] Page Navigation
+      [D-4-04] Menu
+      [D-4-05] Content
+      [D-4-06] Bullet
+      [D-4-07] Detail box
+    --------------------------------
+    [D-5] Javascript
+---------------------------------------------------------------- */
+
+/* [C] General
+---------------------------------------------------------------- */
+/* [C-1] Set up
+-------------------------------- */
+body{
+  background: url("images/bg-slash.png") #999999;
+  color: #333333;
+}
+#site-wrapper{
+  margin: 10px auto;
+  background: url("images/bg-home.jpg") top left no-repeat #FFFFFF;
+  width: 1008px;
+  height: 671px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 5px 3px #666666;
+}
+/* [C-2] Normal classes
+-------------------------------- */
+
+/* [D] Layout
+---------------------------------------------------------------- */
+/* [D-1] Tags / Types
+-------------------------------- */
+a{
+  text-decoration: none;
+}
+/* [D-2] Header
+-------------------------------- */
+#page-logo{
+  z-index: 0;
+}
+#page-logo > a{
+  background-image: url("images/logo-white.png");
+}
+/* [D-3] Footer
+-------------------------------- */
+/* [D-4] Content
+-------------------------------- */
+
+/* [D-4-01] Panels
+-------------------------------- */
+#site-wrapper > [id*="panel"]{
+  height: 671px;
+  overflow-y: auto;
+  float: left;
+  background-color: #D5E7F0;
+  box-shadow: 0 0 5px 2px #999999;
+  position: relative;
+}
+#main-panel{
+  width: 230px;
+  z-index: 5;
+}
+#sub-panel{
+  width: 160px;
+  z-index: 4;
+}
+#content-panel{
+  width: 260px;
+  z-index: 3;
+}
+#content-panel > .content-mask{
+  margin: 10px 0;
+  height: 651px;
+}
+#content-panel .wrapper{
+  padding: 120px 0px 20px 20px;
+}
+#site-wrapper > [id*="panel"] > .wrapper{
+  padding: 120px 20px 20px;
+}
+#site-wrapper > #main-panel > .wrapper{
+  padding-left: 40px;
+}
+#site-wrapper > [id*="panel"] > .close{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: url("images/bg-close.png") center center no-repeat;
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  margin: 5px;
+}
+#site-wrapper > [id*="panel"] > .close span{
+  display: none;
+}
+
+/* [D-4-02] Logo
+-------------------------------- */
+.logo > a{
+  position: absolute;
+  top: 15px;
+  left: 40px;
+  background: url("images/logo.png") top left no-repeat;
+  width: 175px;
+  height: 63px;
+  overflow: hidden;
+  display: block;
+}
+.logo > a > span{
+  display: none;
+}
+/* [D-4-03] Page Navigation
+-------------------------------- */
+#main-nav-open a, #main-nav-back a{
+  position: absolute;
+  overflow: hidden;
+}
+#main-nav-open a span{
+  display: none;
+}
+#main-nav-open a{
+  display: block;
+  top: 470px;
+  left: 0;
+  width: 58px;
+  height: 64px;
+  background: url("images/bg-arrow-menu.png") top left no-repeat;
+}
+#main-nav-back a{
+  display: inline-block;
+  top: 580px;
+  left: 40px;
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 5px 20px;
+  font-size: 0.9em;
+}
+
+/* [D-4-04] Menu
+-------------------------------- */
+.menu a{
+  color: #333333;
+  font-size: 1.1em;
+  text-transform: uppercase;
+}
+.menu li > a{
+  display: block;
+  padding: 10px 15px 10px 0;
+  margin-right: 10px;
+}
+.menu li.active > a, .menu li:hover > a{
+  background: url("images/bg-menu.png") center right no-repeat;
+}
+
+/* [D-4-05] Content
+-------------------------------- */
+/* h1 */
+#content-panel > .wrapper > h1, .detail-box > .wrapper > h1{
+  color: #333333;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  padding: 10px 0;
+  font-weight: normal
+}
+
+/* contac form */
+.contact-us-form input, .contact-us-form textarea{
+  width: 97%;
+}
+.contact-us-form textarea{
+  height: 70px;
+}
+.contact-us-form > p{
+  padding-bottom: 10px;
+}
+.contact-us-form .submit {
+  text-align: right;
+}
+
+/* [D-4-06] Bullet
+-------------------------------- */
+.bullet{
+  display: block;
+  position: absolute;
+  background: url("images/bg-zoom.png") top center no-repeat;
+  height: 22px;
+  width: 22px;
+  overflow: hidden;
+}
+.bullet:hover{
+  background-position: bottom center;
+}
+.bullet span{
+  display: none;
+}
+
+/* [D-4-07] Detail box
+-------------------------------- */
+.detail-box{
+  position: absolute;
+  top: 260px;
+  left: 630px;
+  width: 350px;
+  background-color: #D5E7F0;
+}
+.detail-box > .wrapper{
+  padding: 10px 15px;
+  position: relative;
+}
+.detail-box > .wrapper > h1{
+  padding-bottom: 0;
+  color: #003333;
+}
+.detail-box > .wrapper > h2{
+  color: #9EB2BE;
+}
+.detail-box > .wrapper .detail{
+  margin: 10px 0;
+  max-height: 160px;
+  overflow-y: auto;
+}
+#detail-nav{
+  padding-top: 10px;
+}
+#detail-nav li a{
+  display: inline-block;
+  color: #000000;
+  font-size: 0.9em;
+}
+#detail-nav li a:hover{
+  color: #0033FF;
+}
+#detail-nav-back{
+  float: left;
+}
+#detail-nav-back{
+  float: right;
+}
+
+/* [D-5] Javascript
+-------------------------------- */

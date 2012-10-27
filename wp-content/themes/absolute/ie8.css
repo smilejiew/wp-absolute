@@ -1,0 +1,19 @@
+/*
+  Theme Name: Absolute Kitchen
+*/
+
+/* -------- ie8.css --------
+  Title:
+    Absolute Kitchen Main Style
+  Author:
+    Jiew Nuntapramote
+  Description:
+    Style for IE8 and below fix
+-------------------------------- */
+
+#site-wrapper{
+  border: 3px solid #777777;
+}
+#site-wrapper > [id*="panel"]{
+  border-right: 2px solid #B3C5D0;
+}

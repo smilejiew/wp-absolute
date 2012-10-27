@@ -1,0 +1,100 @@
+/*
+  Theme Name: Absolute Kitchen
+*/
+/* Default properties for WYSIWYG content */
+/* base.css, part of YUI's CSS Foundation */
+.wysiwyg {
+  line-height: 1.2em;
+}
+.wysiwyg h1 {
+	/*18px via YUI Fonts CSS foundation*/
+	font-size:138.5%;
+}
+.wysiwyg h2 {
+	/*16px via YUI Fonts CSS foundation*/
+	font-size:123.1%;
+}
+.wysiwyg h3 {
+	/*14px via YUI Fonts CSS foundation*/
+	font-size:108%;
+}
+.wysiwyg h1,.wysiwyg h2,.wysiwyg h3 {
+	/* top & bottom margin based on font size */
+	margin:1em 0;
+}
+.wysiwyg h1,.wysiwyg h2,.wysiwyg h3,.wysiwyg h4,.wysiwyg h5,.wysiwyg h6,.wysiwyg strong {
+	/*bringing boldness back to headers and the strong element*/
+	font-weight:bold;
+}
+.wysiwyg abbr,.wysiwyg acronym {
+	/*indicating to users that more info is available */
+	border-bottom:1px dotted #DDDDDD;
+	cursor:help;
+}
+.wysiwyg em {
+	/*bringing italics back to the em element*/
+	font-style:italic;
+}
+.wysiwyg blockquote,.wysiwyg ul,.wysiwyg ol,.wysiwyg dl {
+	/*giving blockquotes and lists room to breath*/
+	margin:1em;
+}
+.wysiwyg ol,.wysiwyg ul,.wysiwyg dl {
+	/*bringing lists on to the page with breathing room */
+	margin-left:2em;
+}
+.wysiwyg ol li {
+	/*giving OL's LIs generated numbers*/
+	list-style: decimal outside;
+}
+.wysiwyg ul li {
+	/*giving UL's LIs generated disc markers*/
+	list-style: disc outside;
+}
+.wysiwyg dl dd {
+	/*giving UL's LIs generated numbers*/
+	margin-left:1em;
+}
+.wysiwyg th,.wysiwyg td {
+	/*borders and padding to make the table readable*/
+	border:1px solid #DDDDDD;
+	padding:.5em;
+}
+.wysiwyg th {
+	/*distinguishing table headers from data cells*/
+	font-weight:bold;
+	text-align:center;
+}
+.wysiwyg caption {
+	/*coordinated marking to match cell's padding*/
+	margin-bottom:.5em;
+	/*centered so it doesn't blend in to other content*/
+	text-align:center;
+}
+.wysiwyg p,.wysiwyg fieldset,.wysiwyg table {
+	/*so things don't run into each other*/
+	margin-bottom:0.5em;
+}
+.wysiwyg p{
+	/*so things don't run into each other*/
+	margin-bottom:0.8em;
+}
+.wysiwyg > p:last-child{
+	margin-bottom:0;
+}
+.wysiwyg > p:first-of-type{
+	margin-top:0.8em;
+}
+.wysiwyg > p:first-child{
+	margin-top:0em;
+}
+.wysiwyg sup{
+  font-size: smaller;
+  line-height: normal;
+  vertical-align: super;
+}
+.wysiwyg sub {
+  font-size: smaller;
+  line-height: normal;
+  vertical-align: sub;
+}

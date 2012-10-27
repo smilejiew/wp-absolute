@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Absolute</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="language" content="no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=768px, minimum-scale=1.0, maximum-scale=1.0" />
+    <!--
+    In terms of absolute pixels you can use,
+    the navigation bar of Mobile Safari takes up roughly 78px,
+    so in portrait orientation it is 768×946, and in landscape it is 1024×690.
+    -->
+
+    <!-- Styling -->
+    <link title="Absolute Kitchen" type="image/x-icon" href="favicon.ico" rel="shortcut icon" />
+    <link href="reset.css" rel="stylesheet" media="screen" type="text/css" />
+    <link href="style.css" rel="stylesheet" media="screen" type="text/css" />
+    <!--[if lte IE 8]>
+      <link href="ie8.css" rel="stylesheet" media="all" type="text/css" />
+    <![endif]-->
+    <link href="wysiwyg.css" rel="stylesheet" media="screen" type="text/css" />
+
+    <!-- Script Styling -->
+    <link href="script/scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+    <!-- Script -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script>!window.jQuery && document.write(unescape('%3Cscript src="script/jquery-1.8.2.min.js"%3E%3C/script%3E'))</script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script>!window.jQuery.ui && document.write(unescape('%3Cscript src="script/jquery-ui-1.9.1.custom.min.js"%3E%3C/script%3E'))</script>
+    <script src="script/scrollbar/jquery.mousewheel.min.js"></script>
+    <script src="script/scrollbar/jquery.mCustomScrollbar.js"></script>
+    <script src="script/script.js"></script>
+
+  </head>
+  <body>
+    <div id="site-wrapper">
+      <h1 id="page-logo" class="logo"><a href="/"><span>Absolute kitchen</span></a></h1>
+
+      <!-- Empty content -->
+      <ul id="main-nav">
+        <li id="main-nav-open">
+          <a href="/"><span>Open menu</span></a>
+        </li>
+        <li id="main-nav-back">
+          <a href="/"><span>Back</span></a>
+        </li>
+      </ul>
+
+      <!-- Main menu panel -->
+      <div id="main-panel">
+        <div class="wrapper">
+          <h1 class="logo"><a href="/"><span>Absolute kitchen</span></a></h1>
+          <ul class="menu">
+            <li class="active">
+              <a href="/">Menu 1</a>
+            </li>
+            <li>
+              <a href="/">Menu 2</a>
+            </li>
+          </ul>
+        </div>
+        <a href="/" class="close"><span>close</span></a>
+      </div>
+
+      <!-- Sub menu panel -->
+      <div id="sub-panel">
+        <div class="wrapper">
+          <ul class="menu">
+            <li class="active">
+              <a href="/">Menu 1</a>
+            </li>
+            <li>
+              <a href="/">Menu 2</a>
+            </li>
+          </ul>
+        </div>
+        <a href="/" class="close"><span>close</span></a>
+      </div>
+
+      <!-- Content panel -->
+      <div id="content-panel">
+        <div class="content-mask">
+        <div class="wrapper">
+
+          <h1>Contact us</h1>
+          <form method="post" action="#" class="contact-us-form">
+            <p><input type="text" value="" name="" placeholder="YOUR NAME" /></p>
+            <p><input type="email" value="" name="" placeholder="YOUR E-MAIL" /></p>
+            <p><textarea name=""></textarea></p>
+            <p class="submit"><button type="submit">Submit</button></p>
+          </form>
+
+          <div class="wysiwyg">
+            <img src="images/dummy-image.jpg" alt="" />
+            <a href=""><img src="images/dummy-image.jpg" alt="" /></a>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</p>
+            <ul>
+              <li>test ul 1</li>
+              <li>test ul 2</li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</p>
+            <ol>
+              <li>test ol 1</li>
+              <li>test ol 2</li>
+            </ol>
+            <table>
+              <thead><tr><th>th1</th><th>th2</th></tr></thead>
+              <tbody>
+                <tr><td>td1</td><td>td2</td></tr>
+                <tr><td>td1</td><td>td2</td></tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <!-- Bullet -->
+      <a href="" class="bullet" style="top:200px;left:800px;">
+        <span>bullet 1</span>
+      </a>
+      <a href="" class="bullet" style="top:350px;left:700px;">
+        <span>bullet 1</span>
+      </a>
+
+      <!-- Detail box -->
+      <div class="detail-box">
+        <div class="wrapper">
+          <h1>CHOOSE YOU DESIGNS</h1>
+          <h2>oluptate velit esse cillum</h2>
+          <div class="detail wysiwyg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum </div>
+          <ul id="detail-nav">
+            <li id="detail-nav-back">
+              <a href="/"><span>back</span></a>
+            </li>
+            <li id="detail-nav-next">
+              <a href="/"><span>next</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
