@@ -45,6 +45,7 @@
       [D-4-05] Content
       [D-4-06] Bullet
       [D-4-07] Detail box
+      [D-4-08] Background
     --------------------------------
     [D-5] Javascript
 ---------------------------------------------------------------- */
@@ -78,10 +79,11 @@ a{
 }
 /* [D-2] Header
 -------------------------------- */
-#page-logo{
-  z-index: 0;
+#site-title{
+  z-index: 10;
+  position: relative;
 }
-#page-logo > a{
+#site-title > a{
   background-image: url("images/logo-white.png");
 }
 /* [D-3] Footer
@@ -101,15 +103,15 @@ a{
 }
 #main-panel{
   width: 230px;
-  z-index: 5;
+  z-index: 50;
 }
 #sub-panel{
   width: 160px;
-  z-index: 4;
+  z-index: 40;
 }
 #content-panel{
   width: 260px;
-  z-index: 3;
+  z-index: 30;
 }
 #content-panel > .content-mask{
   margin: 10px 0;
@@ -158,6 +160,7 @@ a{
 #main-nav-open a, #main-nav-back a{
   position: absolute;
   overflow: hidden;
+  z-index: 10;
 }
 #main-nav-open a span{
   display: none;
@@ -192,8 +195,11 @@ a{
   padding: 10px 15px 10px 0;
   margin-right: 10px;
 }
-.menu li.active > a, .menu li:hover > a{
+.menu li.active > a, .menu li:hover > a, .menu li.current_page_item > a{
   background: url("images/bg-menu.png") center right no-repeat;
+}
+.menu li.loading > a{
+  background: url("images/ajax-loader.gif") center right no-repeat;
 }
 
 /* [D-4-05] Content
@@ -230,6 +236,7 @@ a{
   height: 22px;
   width: 22px;
   overflow: hidden;
+  z-index: 20;
 }
 .bullet:hover{
   background-position: bottom center;
@@ -246,6 +253,7 @@ a{
   left: 630px;
   width: 350px;
   background-color: #D5E7F0;
+  z-index: 20;
 }
 .detail-box > .wrapper{
   padding: 10px 15px;
@@ -279,6 +287,18 @@ a{
 }
 #detail-nav-back{
   float: right;
+}
+
+/* [D-4-08] Background
+-------------------------------- */
+.custom-background{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 1008px;
+    height: 671px;
+    overflow: hidden;
 }
 
 /* [D-5] Javascript

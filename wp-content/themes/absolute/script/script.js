@@ -1,6 +1,6 @@
 /* JS here */
 (function($){
     $(document).ready(function(){
-        $("#content-panel > .mask").mCustomScrollbar();
+        $("#content-panel > .content-mask").mCustomScrollbar();
     });
 })(jQuery);
