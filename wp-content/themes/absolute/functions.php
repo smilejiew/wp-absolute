@@ -38,6 +38,12 @@
  * @since Twenty Ten 1.0
  */
 
+/// hide admin bar
+add_filter('show_admin_bar', '__return_false');
+
+add_theme_support( 'post-thumbnails', array( 'post', 'page') ); // Add feature image for posts
+
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  *

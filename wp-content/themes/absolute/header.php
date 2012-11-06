@@ -129,7 +129,7 @@
                 /* From  wordpress default
                  * Our navigation menu. If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assiged to the primary position is the one used. If none is assigned, the menu with the lowest ID is used.
                  */
-                wp_nav_menu( array( 'container_class' => 'menu', 'theme_location' => 'primary', 'depth' => 1 ) );
+                    wp_nav_menu( array( 'container_class' => 'menu', 'theme_location' => 'primary', 'depth' => 1 ) );
                 ?>
             </div>
             <a href="#" class="close"><span>close</span></a>
@@ -169,14 +169,17 @@
                  *      </li>
                  *  </ul>
                  */
+                    $page_id = get_the_ID();
+                    $parent = get_ancestors($page_id,'page');
+                    if(count($parent) > 0){
+                    $subpage = wp_list_pages("title_li=&child_of=".$parent[0]."&echo=0");
+                    }else{
+                    $subpage = wp_list_pages("title_li=&child_of=".$page_id."&echo=0");
+                    }
+
                 ?>
                 <ul class="menu">
-                    <li>
-                        <a href="/">Menu 1</a>
-                    </li>
-                    <li>
-                        <a href="/">Menu 2</a>
-                    </li>
+                    <? echo $subpage; ?>
                 </ul>
             </div>
             <a href="#" class="close"><span>close</span></a>
