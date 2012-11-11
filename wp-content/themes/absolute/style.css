@@ -60,7 +60,7 @@ body{
 }
 #site-wrapper{
   margin: 0px auto;
-  background: url("images/bg-home.jpg") top left no-repeat #FFFFFF;
+  /*background: url("images/bg-home.jpg") top left no-repeat #FFFFFF;*/
   width: 1008px;
   height: 671px;
   overflow: hidden;
@@ -76,6 +76,12 @@ body{
 -------------------------------- */
 a{
   text-decoration: none;
+}
+.hidden{
+  display: none;
+}
+.invisible{
+  visibility: hidden;
 }
 /* [D-2] Header
 -------------------------------- */
@@ -155,6 +161,9 @@ a{
 }
 /* [D-4-03] Page Navigation
 -------------------------------- */
+#main-nav{
+  height: 0px;
+}
 #main-nav-open a, #main-nav-back a{
   position: absolute;
   overflow: hidden;
@@ -304,10 +313,7 @@ a{
 #detail-nav li a:hover{
   color: #0033FF;
 }
-#detail-nav-back{
-  float: left;
-}
-#detail-nav-back{
+#detail-nav-next{
   float: right;
 }
 

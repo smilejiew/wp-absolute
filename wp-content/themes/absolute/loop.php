@@ -22,45 +22,77 @@
         <div class="wrapper">
             <h1><?php _e( 'Not Found', 'twentyten' ); ?></h1>
             <h2>...</h2>
-            <div class="wysiwyg"><?php _e( 'Apologies, but the page you requested could not be found. Perhaps searching will help.', 'twentyten' ); ?></div>
+            <div class="wysiwyg"><?php _e( 'Apologies, but the page you requested could not be found.', 'twentyten' ); ?></div>
         </div>
     </div>
     <?php return; ?>
 <?php endif; ?>
 
-<!-- Content panel -->
-<div id="content-panel">
-    <div class="content-mask">
 <?php
-/* **********************************************
- * Start the Loop.
- */
+$page_id  = get_the_ID();
+$parent   = get_ancestors($page_id, 'page');
+$children = get_pages( array( 'child_of' => $page_id, 'parent' => $page_id, 'sort_column' => 'menu_order') );
 
-$page_id = get_the_ID();
-$parent = get_ancestors($page_id,'page');
-if(count($parent) > 0){
-    $children = get_pages( array( 'child_of' => $parent[0], 'sort_column' => 'menu_order') );
-    foreach( $children as $child ) {
-        echo show_content($child->ID);
-    }
-
-}else{
-    $pages = get_pages( array( 'parent' => 0, 'hierarchical' => 0 , 'sort_column' => 'menu_order') );
-
-    foreach( $pages as $pg ) {
-
-        $subpage = get_pages( array( 'child_of' => $pg->ID, 'sort_column' => 'menu_order') );
-//print_r(count($subpage));
-        if(count($subpage) == 0){
-//echo $pg->ID;
-           echo show_content($pg->ID);
-        }
-
-    }
-
-}
-
-
+// Check if the page is first/second level
+if(count($parent) == 1 || (count($parent) == 0 && count($children) == 0) ):
 ?>
+    <!-- Content panel -->
+    <div id="content-panel">
+        <div class="content-mask">
+            <div class="wrapper">
+                <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+                    <h1 class="entry-title"><?php the_title(); ?></h1>
+                    <?php if ( has_post_thumbnail( $post->ID )): ?>
+                        <a href="#" class="show-background"><?php echo get_the_post_thumbnail( $post->ID, 'thumbnail');?></a>
+                    <?php endif; ?>
+                    <div class="wysiwyg">
+                        <?php the_content(); ?>
+                    </div>
+                <?php endwhile; // end of the loop. ?>
+            </div>
+        </div>
     </div>
-</div>
+    <?php
+    foreach( $children as $pg ):
+        $custom_fields = get_post_custom($pg->ID);
+        $top_position = $custom_fields['top'];
+        $left_position = $custom_fields['left'];
+    ?>
+        <a href="<?php echo $pg->guid ?>" class="bullet" style="top:<?php echo $top_position[0];?>px;left:<?php echo $left_position[0];?>px;">
+            <span>bullet</span>
+        </a>
+    <?php endforeach ?>
+<?php elseif(count($parent) >= 2 ):?>
+    <?php
+    $sibling = count($parent) == 0 ? array() : get_pages( array(  'child_of' => $parent[0], 'parent' => $parent[0], 'sort_column' => 'menu_order') );
+    if ( have_posts() ) while ( have_posts() ) : the_post();
+    ?>
+        <!-- Box content -->
+        <div class="detail-box">
+            <div class="wrapper">
+                <h1><?php the_title(); ?></h1>
+                <div class="wysiwyg"><?php the_content(); ?></div>
+                <?php if(count($sibling) > 1):
+                    $idx = 0;
+                    foreach( $sibling as $pg ):
+                        if($pg->ID == $page_id){
+                            break;
+                        }
+                        $idx++;
+                    endforeach;
+                    $prev = $sibling[$idx - 1];
+                    $next = $sibling[$idx + 1];
+                ?>
+                    <ul id="detail-nav">
+                      <li id="detail-nav-next" <?php echo !$next ? 'class="invisible"' : '' ?>>
+                          <a href="<?php echo $next && $next->guid ? $next->guid : '#' ?>"><span>next</span></a>
+                      </li>
+                      <li id="detail-nav-back" <?php echo !$prev ? 'class="invisible"' : '' ?>>
+                          <a href="<?php echo $prev && $prev->guid ? $prev->guid : '#' ?>"><span>back</span></a>
+                      </li>
+                    </ul>
+                <?php endif ?>
+            </div>
+        </div>
+    <?php endwhile; ?>
+<?php endif;?>

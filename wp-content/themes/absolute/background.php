@@ -19,7 +19,7 @@
     // Check if this is a post or page, if it has a thumbnail.
     if ( is_singular() && current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID )) :
         // Houston, we have a new header image!
-        echo get_the_post_thumbnail( $post->ID, 'large' );
+        echo '<div class="custom-background">' . get_the_post_thumbnail( $post->ID, 'full' ) . '</div>';
     elseif ( get_header_image() ) :
         // Compatibility with versions of WordPress prior to 3.4.
         if ( function_exists( 'get_custom_header' ) ) {

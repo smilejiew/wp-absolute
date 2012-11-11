@@ -51,7 +51,7 @@ add_theme_support( 'post-thumbnails', array( 'post', 'page') ); // Add feature i
  * is designed for, generally via the style.css stylesheet.
  */
 if ( ! isset( $content_width ) )
-	$content_width = 640;
+	$content_width = 1008;
 
 /** Tell WordPress to run twentyten_setup() when the 'after_setup_theme' hook is run. */
 add_action( 'after_setup_theme', 'twentyten_setup' );
@@ -112,8 +112,8 @@ function twentyten_setup() {
 		// The %s is a placeholder for the theme template directory URI.
 		'default-image' => '%s/images/headers/path.jpg',
 		// The height and width of our custom header.
-		'width' => apply_filters( 'twentyten_header_image_width', 940 ),
-		'height' => apply_filters( 'twentyten_header_image_height', 198 ),
+		'width' => apply_filters( 'twentyten_header_image_width', 1008 ),
+		'height' => apply_filters( 'twentyten_header_image_height', 671 ),
 		// Support flexible heights.
 		'flex-height' => true,
 		// Don't support text inside the header image.
@@ -121,9 +121,9 @@ function twentyten_setup() {
 		// Callback for styling the header preview in the admin.
 		'admin-head-callback' => 'twentyten_admin_header_style',
 	);
-	
+
 	add_theme_support( 'custom-header', $custom_header_support );
-	
+
 	if ( ! function_exists( 'get_custom_header' ) ) {
 		// This is all for compatibility with versions of WordPress prior to 3.4.
 		define( 'HEADER_TEXTCOLOR', '' );
@@ -518,6 +518,62 @@ function twentyten_posted_in() {
 }
 endif;
 
+/*** Start custom function *************************************************/
+
+    /**
+     * Register styles for later use
+     * @global type $wp_styles
+     */
+    function my_theme_register_styles() {
+        $uri = get_stylesheet_directory_uri();
+        wp_register_style('my_theme_reset', $uri . '/reset.css', array(), '1.0', 'all');
+        wp_register_style('my_theme_style', $uri . '/style.css', array('my_theme_reset'), '1.0', 'all');
+        wp_register_style('my_theme_wysiwyg', $uri . '/wysiwyg.css', array('my_theme_style'), '1.0', 'all');
+        wp_register_style('my_theme_ie8', $uri . '/ie8.css', array('my_theme_style'), '1.0', 'all');
+        wp_register_style('my_theme_scrollbar', $uri . '/script/scrollbar/jquery.mCustomScrollbar.css', array(), '1.0', 'screen');
+
+        // Adding IE conditional comment
+        global $wp_styles;
+        $wp_styles->add_data( 'my_theme_ie8', 'conditional', 'lte IE 8' );
+    }
+    add_action('init', 'my_theme_register_styles');
+
+    /**
+     * Print out styles for theme
+     */
+    function my_theme_style() {
+        wp_enqueue_style('my_theme_style');
+        wp_enqueue_style('my_theme_wysiwyg');
+        wp_enqueue_style('my_theme_ie8');
+        wp_enqueue_style('my_theme_scrollbar');
+    }
+    add_action('wp_print_styles', 'my_theme_style');
+
+    /**
+     * Print out scripts for theme
+     */
+    function my_theme_script() {
+        //Register styles for later use
+        $themeuri = get_template_directory_uri();
+        wp_enqueue_script('jquery-ui', $themeuri . '/script/jquery-ui-1.9.1.custom.min.js', array('jquery'), '1.9.1');
+        wp_enqueue_script('scrollbar_mousewheel', $themeuri . '/script/scrollbar/jquery.mousewheel.min.js', array('jquery-ui'), '3.0.6');
+        wp_enqueue_script('scrollbar_custom', $themeuri . '/script/scrollbar/jquery.mCustomScrollbar.js', array('scrollbar_mousewheel'), '2.1');
+        wp_enqueue_script('my_script', $themeuri . '/script/script.js', array('scrollbar_custom'), '1.0');
+    }
+    add_action('wp_print_scripts', 'my_theme_script');
+
+    /**
+     * Remove home from the main menu
+     *
+     * @param array $args
+     * @return boolean
+     */
+    function page_menu_args( $args ) {
+        $args['show_home'] = FALSE;
+        return $args;
+    }
+    add_filter( 'wp_page_menu_args', 'page_menu_args' );
+
 
 function show_content ($page_id) {
 
@@ -548,21 +604,33 @@ function show_content ($page_id) {
  * TODO: 1) List all the Bullet in this page
  * TODO: 2) Apply top and left position in style attribute
  */
-?>
-<a href="" class="bullet" style="top:200px;left:800px;">
-  <span>bullet 1</span>
-</a>
-<a href="" class="bullet" style="top:350px;left:700px;">
-  <span>bullet 1</span>
-</a>
 
+    $subpage = get_pages(array( 'child_of' => $page_id, 'sort_column' => 'menu_order'));
+    foreach( $subpage as $pg ) {
+
+        $custom_fields = get_post_custom($pg->ID);
+        $top_position = $custom_fields['top'];
+        $left_position = $custom_fields['left'];
+?>
+        <a href="" class="bullet" style="top:<?=$top_position[0];?>px;left:<?=$left_position[0];?>px;">
+            <span>bullet</span>
+        </a>
+        <? if($pg->post_content != '') { ?>
+        <div class="detail-box">
+            <div class="wrapper">
+                <h1><?=$pg->post_title; ?></h1>
+                <div class="wysiwyg"><?=$pg->post_content; ?></div>
+                <ul id="detail-nav">
+                  <li id="detail-nav-back">
+                      <?php previous_post_link( '%link', '<span>back</span>' ); ?>
+                  </li>
+                  <li id="detail-nav-next">
+                      <?php previous_post_link( '%link', '<span>next</span>' ); ?>
+                  </li>
+                </ul>
+            </div>
+        </div>
 <?
+        }
+    }
 }
-
-function page_menu_args( $args ) {
-    $args['show_home'] = FALSE;
-    return $args;
-}
-add_filter( 'wp_page_menu_args', 'page_menu_args' );
-
-?>

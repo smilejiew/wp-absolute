@@ -27,26 +27,6 @@
 		echo ' | ' . sprintf( __( 'Page %s', 'twentyten' ), max( $paged, $page ) );
 
 	?></title>
-    <?php $themeuri = get_template_directory_uri(); ?>
-    <!-- Styling -->
-    <link href="<?php echo $themeuri; ?>/reset.css" rel="stylesheet" media="all" type="text/css" />
-    <link href="<?php bloginfo( 'stylesheet_url' ); ?>" rel="stylesheet" media="all" type="text/css" />
-    <!--[if lte IE 8]>
-      <link href="<?php echo $themeuri; ?>/ie8.css" rel="stylesheet" media="all" type="text/css" />
-    <![endif]-->
-    <link href="<?php echo $themeuri; ?>/wysiwyg.css" rel="stylesheet" media="all" type="text/css" />
-
-    <!-- Script Styling -->
-    <link href="<?php echo $themeuri; ?>/script/scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
-    <!-- Script -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-    <script>!window.jQuery && document.write(unescape('%3Cscript src="<?php echo $themeuri; ?>/script/jquery-1.8.2.min.js"%3E%3C/script%3E'))</script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-    <script>!window.jQuery.ui && document.write(unescape('%3Cscript src="<?php echo $themeuri; ?>/script/jquery-ui-1.9.1.custom.min.js"%3E%3C/script%3E'))</script>
-    <script src="<?php echo $themeuri; ?>/script/scrollbar/jquery.mousewheel.min.js"></script>
-    <script src="<?php echo $themeuri; ?>/script/scrollbar/jquery.mCustomScrollbar.js"></script>
-    <script src="<?php echo $themeuri; ?>/script/script.js"></script>
-
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php
 	/* We add some JavaScript to pages with the comment form
@@ -113,7 +93,7 @@
                  * Modify in Admin page
                  * Go to Appearance > Menus
                  */
-                    wp_nav_menu( array( 'container_class' => 'menu', 'theme_location' => 'primary', 'depth' => 2 ) );
+                    wp_nav_menu( array( 'menu_id' => 'main-menu', 'container_class' => 'menu', 'theme_location' => 'primary', 'depth' => 2 ) );
                 ?>
             </div>
             <a href="#" class="close"><span>close</span></a>
