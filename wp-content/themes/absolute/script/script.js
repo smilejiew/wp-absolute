@@ -225,8 +225,8 @@ function updateContent(href){
             container.append(content['main'].hide());
             if($j('.active-sub-menu').length){
                 content['main'].css('left', $j('.active-sub-menu').outerWidth() + $j('#main-panel').outerWidth());
-                applyScrollbar();
             }
+            applyScrollbar();
             content['main'].addClass('active-panel').show('slide', {'direction': 'left'}, 800);
 
         }else if(type == 'sub'){
