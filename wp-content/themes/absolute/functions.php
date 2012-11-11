@@ -38,6 +38,12 @@
  * @since Twenty Ten 1.0
  */
 
+/// hide admin bar
+add_filter('show_admin_bar', '__return_false');
+
+add_theme_support( 'post-thumbnails', array( 'post', 'page') ); // Add feature image for posts
+
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  *
@@ -511,3 +517,52 @@ function twentyten_posted_in() {
 	);
 }
 endif;
+
+
+function show_content ($page_id) {
+
+    global $post;
+    $content = get_page($page_id);
+    setup_postdata($content);
+
+?>
+    <div id="content-panel-<?=$content->ID;?>">
+    <div class="content-mask"><div class="wrapper">
+
+        <h1 class="entry-title"><a href="" title=""><?=$content->post_title;?></a></h1>
+
+        <?php /* TODO: Check for contact us page */ ?>
+
+        <?php if ( has_post_thumbnail( $content->ID )): ?>
+            <a href="#" class="show-background"><?php echo get_the_post_thumbnail( $content->ID, 'thumbnail');?></a>
+        <?php endif; ?>
+        <div class="wysiwyg">
+            <?echo the_content(); ?>
+        </div>
+
+    </div></div>
+</div>
+
+<?php
+/* Bullet
+ * TODO: 1) List all the Bullet in this page
+ * TODO: 2) Apply top and left position in style attribute
+ */
+?>
+<a href="" class="bullet" style="top:200px;left:800px;">
+  <span>bullet 1</span>
+</a>
+<a href="" class="bullet" style="top:350px;left:700px;">
+  <span>bullet 1</span>
+</a>
+
+<?
+}
+
+function page_menu_args( $args ) {
+    $args['show_home'] = FALSE;
+    return $args;
+}
+add_filter( 'wp_page_menu_args', 'page_menu_args' );
+
+?>

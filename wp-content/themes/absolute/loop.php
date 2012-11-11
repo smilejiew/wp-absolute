@@ -28,9 +28,39 @@
     <?php return; ?>
 <?php endif; ?>
 
+<!-- Content panel -->
+<div id="content-panel">
+    <div class="content-mask">
 <?php
 /* **********************************************
  * Start the Loop.
  */
-get_template_part( 'loop', 'page' );
+
+$page_id = get_the_ID();
+$parent = get_ancestors($page_id,'page');
+if(count($parent) > 0){
+    $children = get_pages( array( 'child_of' => $parent[0], 'sort_column' => 'menu_order') );
+    foreach( $children as $child ) {
+        echo show_content($child->ID);
+    }
+
+}else{
+    $pages = get_pages( array( 'parent' => 0, 'hierarchical' => 0 , 'sort_column' => 'menu_order') );
+
+    foreach( $pages as $pg ) {
+
+        $subpage = get_pages( array( 'child_of' => $pg->ID, 'sort_column' => 'menu_order') );
+//print_r(count($subpage));
+        if(count($subpage) == 0){
+//echo $pg->ID;
+           echo show_content($pg->ID);
+        }
+
+    }
+
+}
+
+
 ?>
+    </div>
+</div>
