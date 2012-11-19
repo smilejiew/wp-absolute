@@ -14,3 +14,11 @@
 #site-wrapper{
   border: 3px solid #777777;
 }
+
+.mCSB_scrollTools .mCSB_dragger{
+  left: 0;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}

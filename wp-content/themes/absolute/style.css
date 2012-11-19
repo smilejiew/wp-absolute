@@ -311,6 +311,7 @@ a, .btn, .custom-background{
   min-height: 50px;
   max-height: 195px;
   overflow-y: auto;
+  padding-left: 15px;
 }
 
 #detail-nav li a{
