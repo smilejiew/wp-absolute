@@ -58,13 +58,14 @@ if(count($parent) == 1 || (count($parent) == 0 && count($children) == 0) ):
         $top_position = $custom_fields['top'];
         $left_position = $custom_fields['left'];
     ?>
-        <a href="<?php echo $pg->guid ?>" class="bullet" style="top:<?php echo $top_position[0];?>px;left:<?php echo $left_position[0];?>px;">
+        <a href="<?php echo get_permalink( $pg->ID ) ?>" class="bullet" style="top:<?php echo $top_position[0];?>px;left:<?php echo $left_position[0];?>px;">
             <span>bullet</span>
         </a>
     <?php endforeach ?>
 <?php elseif(count($parent) >= 2 ):?>
     <?php
     $sibling = count($parent) == 0 ? array() : get_pages( array(  'child_of' => $parent[0], 'parent' => $parent[0], 'sort_column' => 'menu_order') );
+
     if ( have_posts() ) while ( have_posts() ) : the_post();
     ?>
         <!-- Box content -->
@@ -85,10 +86,10 @@ if(count($parent) == 1 || (count($parent) == 0 && count($children) == 0) ):
                 ?>
                     <ul id="detail-nav">
                       <li id="detail-nav-next" <?php echo !$next ? 'class="invisible"' : '' ?>>
-                          <a href="<?php echo $next && $next->guid ? $next->guid : '#' ?>"><span>next</span></a>
+                          <a href="<?php echo $next ? get_permalink( $next->ID ) : '#' ?>"><span>next</span></a>
                       </li>
                       <li id="detail-nav-back" <?php echo !$prev ? 'class="invisible"' : '' ?>>
-                          <a href="<?php echo $prev && $prev->guid ? $prev->guid : '#' ?>"><span>prev</span></a>
+                          <a href="<?php echo $prev ? get_permalink( $prev->ID ) : '#' ?>"><span>prev</span></a>
                       </li>
                     </ul>
                 <?php endif ?>
