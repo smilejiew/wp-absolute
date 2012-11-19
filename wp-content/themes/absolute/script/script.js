@@ -218,6 +218,9 @@ $j(document).ready(function(){
                             self.applyContentScrollbar();
                             self.imageListObsv();
                             self.showBackgroundObsv();
+
+                            // contact us form observe (plug in)
+                            try{ observeContactFrom(); }catch(err){}
                         }
 
                     // Small box content

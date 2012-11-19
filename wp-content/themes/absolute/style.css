@@ -105,7 +105,8 @@ a, .btn, .custom-background{
 -------------------------------- */
 #main-panel,
 #content-panel,
-.sub-menu{
+.sub-menu,
+.menu .children{
   height: 671px;
   background-color: #D5E7F0;
   box-shadow: 0 0 5px 2px #999999;
@@ -206,7 +207,7 @@ a, .btn, .custom-background{
   padding: 10px 15px 10px 0;
   margin-right: 10px;
 }
-.menu > li > a{
+.menu > li > a, .menu > ul > li > a{
   margin-right: 30px;
 }
 
@@ -214,11 +215,13 @@ a, .btn, .custom-background{
   background: url("images/bg-menu.png") center right no-repeat;
 }
 .menu li.loading > a,
-.sub-menu li.loading > a{
+.sub-menu li.loading > a,
+.menu .children li.loading > a{
   background: url("images/ajax-loader.gif") center right no-repeat;
 }
 
-.sub-menu{
+.sub-menu,
+.menu .children{
   float: none;
   position: absolute;
   left: 231px;
@@ -227,10 +230,12 @@ a, .btn, .custom-background{
   display: none;
 }
 
-.sub-menu li:first-child {
+.sub-menu li:first-child,
+.menu .children li:first-child{
   padding-top: 120px;
 }
-.sub-menu li {
+.sub-menu li,
+.menu .children li{
   margin: 0 20px;
 }
 .active-sub-menu{
@@ -338,5 +343,8 @@ a, .btn, .custom-background{
   font-style: italic;
   padding-bottom: 10px;
 }
-/* [D-5] Javascript
+/* [D-5] Javascript (Overriding JS style)
 -------------------------------- */
+#scf-msg {
+  width: 96%;
+}
