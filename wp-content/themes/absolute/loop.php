@@ -71,7 +71,7 @@ if(count($parent) == 1 || (count($parent) == 0 && count($children) == 0) ):
         <div class="detail-box">
             <div class="wrapper">
                 <h1><?php the_title(); ?></h1>
-                <div class="wysiwyg"><?php the_content(); ?></div>
+                <div class="wysiwyg detail"><?php the_content(); ?></div>
                 <?php if(count($sibling) > 1):
                     $idx = 0;
                     foreach( $sibling as $pg ):
@@ -88,7 +88,7 @@ if(count($parent) == 1 || (count($parent) == 0 && count($children) == 0) ):
                           <a href="<?php echo $next && $next->guid ? $next->guid : '#' ?>"><span>next</span></a>
                       </li>
                       <li id="detail-nav-back" <?php echo !$prev ? 'class="invisible"' : '' ?>>
-                          <a href="<?php echo $prev && $prev->guid ? $prev->guid : '#' ?>"><span>back</span></a>
+                          <a href="<?php echo $prev && $prev->guid ? $prev->guid : '#' ?>"><span>prev</span></a>
                       </li>
                     </ul>
                 <?php endif ?>

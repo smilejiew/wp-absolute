@@ -574,63 +574,33 @@ endif;
     }
     add_filter( 'wp_page_menu_args', 'page_menu_args' );
 
-
-function show_content ($page_id) {
-
-    global $post;
-    $content = get_page($page_id);
-    setup_postdata($content);
-
-?>
-    <div id="content-panel-<?=$content->ID;?>">
-    <div class="content-mask"><div class="wrapper">
-
-        <h1 class="entry-title"><a href="" title=""><?=$content->post_title;?></a></h1>
-
-        <?php /* TODO: Check for contact us page */ ?>
-
-        <?php if ( has_post_thumbnail( $content->ID )): ?>
-            <a href="#" class="show-background"><?php echo get_the_post_thumbnail( $content->ID, 'thumbnail');?></a>
-        <?php endif; ?>
-        <div class="wysiwyg">
-            <?echo the_content(); ?>
-        </div>
-
-    </div></div>
-</div>
-
-<?php
-/* Bullet
- * TODO: 1) List all the Bullet in this page
- * TODO: 2) Apply top and left position in style attribute
- */
-
-    $subpage = get_pages(array( 'child_of' => $page_id, 'sort_column' => 'menu_order'));
-    foreach( $subpage as $pg ) {
-
-        $custom_fields = get_post_custom($pg->ID);
-        $top_position = $custom_fields['top'];
-        $left_position = $custom_fields['left'];
-?>
-        <a href="" class="bullet" style="top:<?=$top_position[0];?>px;left:<?=$left_position[0];?>px;">
-            <span>bullet</span>
-        </a>
-        <? if($pg->post_content != '') { ?>
-        <div class="detail-box">
-            <div class="wrapper">
-                <h1><?=$pg->post_title; ?></h1>
-                <div class="wysiwyg"><?=$pg->post_content; ?></div>
-                <ul id="detail-nav">
-                  <li id="detail-nav-back">
-                      <?php previous_post_link( '%link', '<span>back</span>' ); ?>
-                  </li>
-                  <li id="detail-nav-next">
-                      <?php previous_post_link( '%link', '<span>next</span>' ); ?>
-                  </li>
-                </ul>
-            </div>
-        </div>
-<?
-        }
+    /**
+     * Adding a custom field in the image attachment.
+     *
+     * @param array $form_fields
+     * @param object $post
+     * @return array
+     */
+    function my_image_attachment_fields_to_edit($form_fields, $post) {
+        $form_fields["custom_src"]["label"] = __("Link to");
+        $form_fields["custom_src"]["input"] = "text";
+        $form_fields["custom_src"]["value"] = get_post_meta($post->ID, "_custom_src", true);
+        $form_fields["custom_src"]["helps"] = "Put url that the image will link to.";
+        return $form_fields;
     }
-}
+    add_filter("attachment_fields_to_edit", "my_image_attachment_fields_to_edit", null, 2);
+
+    /**
+     * Saving a custom field of the image attachment.
+     *
+     * @param array $post
+     * @param array $attachment
+     * @return array
+     */
+    function my_image_attachment_fields_to_save($post, $attachment) {
+        if( isset($attachment['custom_src']) ) {
+            update_post_meta($post['ID'], '_custom_src', $attachment['custom_src']);
+        }
+        return $post;
+    }
+    add_filter("attachment_fields_to_save", "my_image_attachment_fields_to_save", null, 2);
