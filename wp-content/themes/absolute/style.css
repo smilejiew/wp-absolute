@@ -245,11 +245,11 @@ a, .btn, .custom-background{
 /* [D-4-05] Content
 -------------------------------- */
 /* h1 */
-#content-panel > .wrapper > h1, .detail-box > .wrapper > h1{
+#content-panel .wrapper > h1, .detail-box > .wrapper > h1{
   color: #333333;
   font-size: 1.1em;
   text-transform: uppercase;
-  padding: 10px 0;
+  padding: 0 0 10px 0;
   font-weight: normal
 }
 
