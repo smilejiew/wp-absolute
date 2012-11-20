@@ -63,7 +63,7 @@ body{
   margin: 0px auto;
   /*background: url("images/bg-home.jpg") top left no-repeat #FFFFFF;*/
   width: 1008px;
-  height: 671px;
+  height: 660px;
   overflow: hidden;
   position: relative;
   box-shadow: 0 0 5px 3px #666666;
@@ -107,7 +107,7 @@ a, .btn, .custom-background{
 #content-panel,
 .sub-menu,
 .menu .children{
-  height: 671px;
+  height: 660px;
   background-color: #D5E7F0;
   box-shadow: 0 0 5px 2px #999999;
   position: relative;
@@ -127,7 +127,7 @@ a, .btn, .custom-background{
 }
 #content-panel > .content-mask{
   margin: 10px 0;
-  height: 651px;
+  height: 640px;
 }
 #main-panel > .wrapper{
   padding: 120px 0 20px 40px;
@@ -334,7 +334,7 @@ a, .btn, .custom-background{
   top: 0;
   left: 0;
   width: 1008px;
-  height: 671px;
+  height: 660px;
   overflow: hidden;
 }
 

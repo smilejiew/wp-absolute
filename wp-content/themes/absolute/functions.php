@@ -113,7 +113,7 @@ function twentyten_setup() {
 		'default-image' => '%s/images/headers/path.jpg',
 		// The height and width of our custom header.
 		'width' => apply_filters( 'twentyten_header_image_width', 1008 ),
-		'height' => apply_filters( 'twentyten_header_image_height', 671 ),
+		'height' => apply_filters( 'twentyten_header_image_height', 660 ),
 		// Support flexible heights.
 		'flex-height' => true,
 		// Don't support text inside the header image.
