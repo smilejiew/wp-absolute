@@ -252,9 +252,9 @@ $j(document).ready(function(){
                             bg     = $j('.custom-background'),
                             oldSrc = $j('.custom-background img').length ? $j('.custom-background img').attr('src') : '';
 
-                        container.append(content['background'].hide());
-                        self.customBackgroundObsv();
                         if(newSrc && newSrc != oldSrc){
+                            container.append(content['background'].hide());
+                            self.customBackgroundObsv();
                             if(bg.length){
                                 bg.hide('fade', {}, 400, function(){
                                     bg.remove();
