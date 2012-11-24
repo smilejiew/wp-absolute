@@ -308,8 +308,8 @@ $j(document).ready(function(){
                         var box = $j('.detail-box .detail');
                         if(box.length){
                             box.css('height', 'auto');
-                            if(box.height() >= 195){
-                                box.height(195);
+                            if(box.height() >= 190){
+                                box.height(190);
                             }
                             box.mCustomScrollbar();
                         }
