@@ -1,0 +1,254 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sacf\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-29 18:45-0700\n"
+"PO-Revision-Date: 2012-03-10 12:53+0100\n"
+"Last-Translator: Geoffrey Lovinfosse <geoffrey@lovinfosse.com>\n"
+"Language-Team: H3 Fuzion <support@h3fuzion.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../sacf.php:47
+#: ../sacf.php:123
+msgid "Settings"
+msgstr "Réglages"
+
+#: ../sacf.php:117
+msgid "Simple Ajax Contact Form - Options Page"
+msgstr "Simple Ajax Contact Form - Pages d'options"
+
+#: ../sacf.php:118
+msgid "SACF Settings"
+msgstr "Réglages SACF"
+
+#: ../sacf.php:124
+msgid "Edit Messages"
+msgstr "Editer Messages"
+
+#: ../sacf.php:242
+#: ../sacf.php:364
+msgid "Name"
+msgstr "Nom"
+
+#: ../sacf.php:250
+msgid "Telephone"
+msgstr "Téléphone"
+
+#: ../sacf.php:253
+msgid "E-Mail"
+msgstr "E-mail"
+
+#: ../sacf.php:263
+#: ../sacf.php:370
+msgid "Subject"
+msgstr "Sujet"
+
+#: ../sacf.php:267
+msgid "Comment"
+msgstr "Commentaire"
+
+#: ../sacf.php:280
+msgid "Send"
+msgstr "Envoyer"
+
+#: ../sacf.php:366
+msgid "Phone"
+msgstr "Tel."
+
+#: ../sacf.php:368
+msgid "Email"
+msgstr "Email"
+
+#: ../sacf.php:372
+msgid "Date"
+msgstr "Date"
+
+#: ../sacf_error_settings.php:22
+#: ../sacf_form.php:108
+msgid "Simple AJAX Contact Form"
+msgstr "Simple AJAX Contact Form"
+
+#: ../sacf_error_settings.php:24
+#: ../sacf_form.php:116
+msgid "Settings saved."
+msgstr "Les règlages ont été sauvegardés."
+
+#: ../sacf_error_settings.php:28
+msgid "Error Messages"
+msgstr "Messages d'erreur"
+
+#: ../sacf_error_settings.php:29
+msgid "Empty field:"
+msgstr "Champs vides:"
+
+#: ../sacf_error_settings.php:32
+msgid "Email no valid:"
+msgstr "Adresse email invalide:"
+
+#: ../sacf_error_settings.php:35
+msgid "Wrong Captcha:"
+msgstr "Captcha erroné:"
+
+#: ../sacf_error_settings.php:39
+msgid "Empty Capcha:"
+msgstr "Captcha vide:"
+
+#: ../sacf_error_settings.php:43
+msgid "Empty Phone:"
+msgstr "Numéro de téléphone non spécifié:"
+
+#: ../sacf_error_settings.php:46
+msgid "Empty Subject:"
+msgstr "Sujet non spécifié:"
+
+#: ../sacf_error_settings.php:49
+msgid "Success Message"
+msgstr "Message de réussite"
+
+#: ../sacf_error_settings.php:50
+msgid "Success Message:"
+msgstr "Message de réussite:"
+
+#: ../sacf_error_settings.php:55
+#: ../sacf_form.php:222
+msgid "Update options"
+msgstr "Mettre a jour options"
+
+#: ../sacf_form.php:24
+msgid "Only font files (.ttf) are allowed"
+msgstr "Uniquement les polices du type ttf sont autorisées"
+
+#: ../sacf_form.php:31
+msgid "The file you attempted to upload is too large"
+msgstr "La taille du fichier uploadé est trop large."
+
+#: ../sacf_form.php:38
+msgid "You cannot upload to the specified directory, please CHMOD it to 777"
+msgstr "Vous ne pouvez pas uploader dans le répertoire choisi, merci de CHMOD 777 ce répertoire"
+
+#: ../sacf_form.php:45
+msgid "Your file upload was successful"
+msgstr "Votre fichier a bien été uploadé"
+
+#: ../sacf_form.php:47
+msgid "There was an error during the file upload.  Please try again"
+msgstr "Un problème s'est produit durant l'upload, merci de réessayer."
+
+#: ../sacf_form.php:71
+msgid "Enter a valid email"
+msgstr "Entrez une adresse email valide"
+
+#: ../sacf_form.php:83
+msgid "Enter form size"
+msgstr "Entrez la taille du formulaire"
+
+#: ../sacf_form.php:90
+msgid "Enter your business name"
+msgstr "Entrez le nom de la société"
+
+#: ../sacf_form.php:97
+msgid "Enter captcha size"
+msgstr "Taille du captcha"
+
+#: ../sacf_form.php:125
+msgid "Personal Information"
+msgstr "Informations personnelles"
+
+#: ../sacf_form.php:126
+msgid "Business Name:"
+msgstr "Nom de la société:"
+
+#: ../sacf_form.php:129
+msgid "Business Email:"
+msgstr "Email de la société:"
+
+#: ../sacf_form.php:132
+msgid "Form Settings"
+msgstr "Paramètres du formulaire"
+
+#: ../sacf_form.php:133
+msgid "Form Width:"
+msgstr "Largeur du formulaire"
+
+#: ../sacf_form.php:137
+msgid "Display Captcha:"
+msgstr "Afficher le Captcha:"
+
+#: ../sacf_form.php:144
+#: ../sacf_form.php:174
+#: ../sacf_form.php:191
+#: ../sacf_form.php:208
+msgid "Yes"
+msgstr "Oui"
+
+#: ../sacf_form.php:150
+#: ../sacf_form.php:180
+#: ../sacf_form.php:197
+#: ../sacf_form.php:213
+msgid "No"
+msgstr "Non"
+
+#: ../sacf_form.php:154
+msgid "Captcha color:"
+msgstr "Couleur du Captcha:"
+
+#: ../sacf_form.php:158
+msgid "Captcha Fonts:"
+msgstr "Police pour le Captcha:"
+
+#: ../sacf_form.php:163
+msgid "Captcha Font Size:"
+msgstr "Taille de la police pour le Captcha"
+
+#: ../sacf_form.php:167
+msgid "Display Subject:"
+msgstr "Afficher Sujet:"
+
+#: ../sacf_form.php:184
+msgid "Subject Requiered:"
+msgstr "Sujet requis:"
+
+#: ../sacf_form.php:201
+msgid "Phone Requiered:"
+msgstr "Téléphone requis:"
+
+#: ../sacf_form.php:217
+msgid "Phone Format (Mask):"
+msgstr "Format du champ téléphone (Masque):"
+
+#: ../sacf_form.php:219
+msgid "Enter only nines Ex. (999) 999-9999"
+msgstr "Entrez uniquement des neufs. Ex.: (999) 999-9999"
+
+#: ../sacf_form.php:229
+msgid "Upload"
+msgstr "Envoyer"
+
+#: ../sacf_form.php:231
+msgid "Select a Font"
+msgstr "Choisir une police"
+
+#: ../sacf_form.php:248
+msgid "Upload Font"
+msgstr "Envoyer une police"
+
+#~ msgid "This is a test of lang page"
+#~ msgstr "Este es un test de traduccion"
+
+#~ msgid "tiempoeee"
+#~ msgstr "trettt"
+
+#~ msgid "Namer"
+#~ msgstr "Noob"
+
+#~ msgid "settings"
+#~ msgstr "Config"
+
+#~ msgid "Names"
+#~ msgstr "Nom"

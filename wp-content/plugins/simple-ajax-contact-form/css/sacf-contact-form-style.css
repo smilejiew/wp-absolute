@@ -1,0 +1,61 @@
+*:focus { outline: none}
+img{border:none}
+br{clear:left}
+
+
+/*Display error and check icons*/
+.errorMsg {background:url(../images/errorIcon.png)  no-repeat;padding-left:20px; font-size: 13px;color: tomato;font-weight: bold; float:left}
+
+.sacf_clear{clear:both}
+.paddingAll{padding:10px}
+
+/*round corners of container*/
+.allCorners {-moz-border-radius: 5px;-webkit-border-radius: 5px;-khtml-border-radius: 5px;border-radius: 5px}
+
+/*Main*/
+/*Simple contact form (SCF)*/
+#scf-main-container{background-color:white; margin:100px auto}
+
+/*Form*/
+#scf-form{width:100%; overflow:auto; padding:0;}
+#scf-form label{float:left; width:25%; margin:0 0 10px 0; clear:left; color:#555; text-align:right; font-size:1em}
+#scf-form .txt{float:left; width:97%; color:#777; margin-bottom: 12px;}
+#scf-form #scf-phone{font:.9em arial,sans-serif;}
+#scf-form textarea{float:left; width:97%; height:130px; color:#777;margin:0 0 10px 0}
+#scf-form .sacf_txt_container{width:71.5%; float:right; padding:0;margin:0}
+
+
+#scf-form input#scf-submit{float:right; 
+-moz-border-radius-bottomleft:5px;
+-moz-border-radius-bottomright:5px;
+-moz-border-radius-topleft:5px;
+-moz-border-radius-topright:5px;
+background:#0f89c9 none repeat scroll 0 0;
+border:1px solid #0d5e88;
+color:#FFF;
+cursor:pointer;
+height:30px;
+font-weight:bold;
+font-size:1.1em;
+margin:0;
+font-size:1em;
+outline:none;
+min-width:90px
+}
+
+#scf-form input#scf-captcha{width:55px;float:left;color:#777}
+
+/*require*/
+#scf-form b{color:red; text-weight:bold; margin:0 3px}
+
+/*Error*/
+#scf-msg{width:98%; margin:0 0 10px 0; padding:5px 0 0 5px; display:none}
+.scf-msg-error{border:1px solid red; background-color:bisque; margin:5px 0 0 5px}
+
+/*success msg*/
+#successMsg{background:url(../images/checkIcon.png)  no-repeat;padding-left:20px;font-size: 13px;color: yellowGreen;font-weight: bold}
+
+/*loader*/
+#loader{background:url(../images/loader.gif)  no-repeat;width:32px; height:32px;float:left; margin-right:5px; display:none}
+
+#submit_cont{clear:both; margin-top:15px; float:right; width:130px}
