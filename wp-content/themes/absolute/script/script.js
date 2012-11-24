@@ -1,5 +1,17 @@
 /* JS here */
 var $j = jQuery.noConflict();
+var isSupportHTML5Feature = (function(){
+    // Used for detacting HTML5 features for an input element.
+    var input = document.createElement("input");
+    var isUnsupport = (/(safari|iphone|android)/).test(navigator.userAgent.toString().toLowerCase());
+
+    // check for placeholder attribute support
+    if(isUnsupport || !('placeholder' in input)){
+        return false;
+    }
+    return true;
+})();
+
 $j(document).ready(function(){
 
     // Variables
@@ -219,6 +231,7 @@ $j(document).ready(function(){
                             self.imageListObsv();
                             self.showBackgroundObsv();
 
+                            self.togglingInput($j('input[placeholder]'));
                             // contact us form observe (plug in)
                             try{ observeContactFrom(); }catch(err){}
                         }
@@ -287,19 +300,21 @@ $j(document).ready(function(){
              * Scrollbar
              */
             applyContentScrollbar: function(){
-                if(!$j('#content-panel .mCustomScrollbar').length){
-                    $j('#content-panel > .content-mask').mCustomScrollbar();
-                }
-                if(!$j('.detail-box .mCustomScrollbar').length){
-                    var box = $j('.detail-box .detail');
-                    if(box.length){
-                        box.css('height', 'auto');
-                        if(box.height() >= 195){
-                            box.height(195);
-                        }
-                        box.mCustomScrollbar();
+                try{
+                    if(!$j('#content-panel .mCustomScrollbar').length){
+                        $j('#content-panel > .content-mask').mCustomScrollbar();
                     }
-                }
+                    if(!$j('.detail-box .mCustomScrollbar').length){
+                        var box = $j('.detail-box .detail');
+                        if(box.length){
+                            box.css('height', 'auto');
+                            if(box.height() >= 195){
+                                box.height(195);
+                            }
+                            box.mCustomScrollbar();
+                        }
+                    }
+                }catch(err){}
             },
 
             /**
@@ -372,6 +387,26 @@ $j(document).ready(function(){
                     self.callContent(this);
                     return false;
                 });
+            },
+
+            togglingInput: function(inp) {
+                if (inp && !isSupportHTML5Feature) {
+                    $j(inp).each(function() {
+                        var i = $j(this),
+                            placeholder = i.attr('placeholder');
+                        if (placeholder) {
+                            if (i.val() == '') i.val(placeholder);
+                            i.off('focus');
+                            i.on('focus', function() {
+                                if (i.val() == placeholder) this.value = '';
+                            });
+                            i.off('blur');
+                            i.on('blur', function() {
+                                if (i.val() == '') i.val(placeholder);
+                            });
+                        }
+                    });
+                }
             }
         };
 
@@ -452,4 +487,7 @@ $j(document).ready(function(){
     self.bulletObsv();
     self.customBackgroundObsv();
     self.boxNav();
+
+    // Form
+    self.togglingInput($j('input[placeholder]'));
 });
