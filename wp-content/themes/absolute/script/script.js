@@ -228,6 +228,7 @@ $j(document).ready(function(){
                             }
                             contentPanel.addClass('active-panel').show('slide', {'direction': 'left'}, 800);
                             self.applyContentScrollbar();
+                            self.imageContentObsv();
                             self.imageListObsv();
                             self.showBackgroundObsv();
 
@@ -318,10 +319,23 @@ $j(document).ready(function(){
             },
 
             /**
-             * Bullet observing
+             * Image list observing
              */
             imageListObsv: function(){
                 var images = $j('.image-list a');
+                images.off('click');
+                images.on('click', function(){
+                    self.callContent(this);
+                    $j('#main-panel .close').trigger('click');
+                    return false;
+                });
+            },
+
+            /**
+             * Image in content observing
+             */
+            imageContentObsv: function(){
+                var images = $j('#content-panel .wysiwyg a[rel*="attachment"]');
                 images.off('click');
                 images.on('click', function(){
                     self.callContent(this);
@@ -482,6 +496,7 @@ $j(document).ready(function(){
     self.menuPanelObsv();
 
     // Background Navigation
+    self.imageContentObsv();
     self.imageListObsv();
     self.showBackgroundObsv();
     self.bulletObsv();
