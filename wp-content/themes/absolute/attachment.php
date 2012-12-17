@@ -18,7 +18,7 @@ if ( have_posts() ):
             if($custom_fields['_custom_src']):
                 $attr['data-href'] = $custom_fields['_custom_src'][0];
             endif;
-            echo '<div class="custom-background">' . wp_get_attachment_image( $post->ID, 'full', false, $attr ) . '</div>';
+            echo '<div class="custom-bg">' . wp_get_attachment_image( $post->ID, 'full', false, $attr ) . '</div>';
         else:
             get_template_part( 'background' );
         endif;

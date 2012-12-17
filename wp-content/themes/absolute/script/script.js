@@ -188,7 +188,7 @@ $j(document).ready(function(){
                             'main'       : div.find('#content-panel'),
                             'sub'        : div.find('.detail-box'),
                             'bullet'     : div.find('.bullet'),
-                            'background' : div.find('.custom-background')
+                            'background' : div.find('.custom-bg')
                         }
                         self.updateContent(href);
                         if(option.callback && typeof(option.callback) == 'function'){
@@ -263,8 +263,8 @@ $j(document).ready(function(){
                     // background
                     if(content['background'].length){
                         var newSrc = content['background'].find('img').attr('src') || '',
-                            bg     = $j('.custom-background'),
-                            oldSrc = $j('.custom-background img').length ? $j('.custom-background img').attr('src') : '';
+                            bg     = $j('.custom-bg'),
+                            oldSrc = $j('.custom-bg img').length ? $j('.custom-bg img').attr('src') : '';
 
                         if(newSrc && newSrc != oldSrc){
                             container.append(content['background'].hide());
@@ -360,7 +360,7 @@ $j(document).ready(function(){
              * Background observing
              */
             customBackgroundObsv: function(){
-                var bg = $j('.custom-background');
+                var bg = $j('.custom-bg');
                 bg.off('click');
                 bg.on('click', function(){
                     $j('#main-panel .close').trigger('click');
@@ -474,7 +474,7 @@ $j(document).ready(function(){
         'main'       : wrapper.find('#content-panel'),
         'sub'        : wrapper.find('.detail-box'),
         'bullet'     : wrapper.find('.bullet'),
-        'background' : wrapper.find('.custom-background')
+        'background' : wrapper.find('.custom-bg')
     };
     activeHref = CONTENT[initHref].type == 'main' ? initHref : '';
 

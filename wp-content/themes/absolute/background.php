@@ -36,7 +36,7 @@
             $header_image_height = HEADER_IMAGE_HEIGHT;
         }
 ?>
-<div class="custom-background">
+<div class="custom-bg">
     <img src="<?php header_image(); ?>" width="<?php echo $header_image_width; ?>" height="<?php echo $header_image_height; ?>" alt="" />
 </div>
 <?php endif; ?>

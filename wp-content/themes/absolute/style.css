@@ -78,7 +78,7 @@ body{
 a{
   text-decoration: none;
 }
-a, .btn, .custom-background{
+a, .btn, .custom-bg{
   cursor: pointer;
 }
 .hidden{
@@ -328,7 +328,7 @@ a, .btn, .custom-background{
 
 /* [D-4-08] Background
 -------------------------------- */
-.custom-background{
+.custom-bg{
   position: absolute;
   z-index: 2;
   top: 0;
