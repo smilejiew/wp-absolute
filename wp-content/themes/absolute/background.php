@@ -25,7 +25,7 @@
         if($custom_fields['_custom_src']):
             $attr['data-href'] = $custom_fields['_custom_src'][0];
         endif;
-        echo '<div class="custom-background">' . get_the_post_thumbnail( $post->ID, 'full', $attr ) . '</div>';
+        echo '<div class="custom-bg">' . get_the_post_thumbnail( $post->ID, 'full', $attr ) . '</div>';
     elseif ( get_header_image() ) :
         // Compatibility with versions of WordPress prior to 3.4.
         if ( function_exists( 'get_custom_header' ) ) {
