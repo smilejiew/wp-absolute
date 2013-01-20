@@ -16,13 +16,15 @@ $j(document).ready(function(){
 
     // Variables
     var CONTENT = {},
-        activeHref = '';
+        activeHref = '',
+        isClosing = false;
 
     // elements
     var menu     = $j('#main-menu a'),
         openBtn  = $j('#main-nav-open'),
         backBtn  = $j('#main-nav-back'),
-        closeBtn = $j('#main-panel .close');
+        closeBtn = $j('#main-panel .close'),
+        slider   = $j('#image-rotation-wrp');
 
     // class
     var activePanel   = 'active-panel',
@@ -36,6 +38,9 @@ $j(document).ready(function(){
              * Content animation
              */
             moveMenu: function(elem, option, callback){
+                if(isClosing && option.move != 'hide'){
+                    return;
+                }
                 if($j(elem).length){
                     option = option || {};
                     if(option.move == 'hide'){
@@ -84,6 +89,7 @@ $j(document).ready(function(){
                 elem.off('click');
                 elem.on('click', function(){
                     // slide hide menu
+                    isClosing = true;
                     self.moveMenu(
                         $j('#content-panel.active-panel'),
                         {'move': 'hide'},
@@ -94,6 +100,7 @@ $j(document).ready(function(){
                                     self.moveMenu($j('#main-panel'),
                                         {'move': 'hide'},
                                         function(){
+                                            isClosing = false;
                                             if(typeof(callback) == 'function'){
                                                 callback();
                                             }
@@ -120,6 +127,7 @@ $j(document).ready(function(){
                             // sub menu
                             submenu = link.next('.sub-menu');
 
+                        $j('#site-wrapper > .ui-effects-wrapper').remove();
                         if(link.parent().hasClass(activeMenu)){
                             return false;
                         }
@@ -140,9 +148,17 @@ $j(document).ready(function(){
                                 self.moveMenu(link.parent().siblings().find('.' + activeSubMenu),
                                     {'cls': activeSubMenu, 'move': 'hide'},
                                     function(){
+                                        if(isClosing){
+                                            link.parent().removeClass(loading).removeClass(activeMenu);
+                                            return;
+                                        }
                                         self.moveMenu(submenu,
                                             {'cls': activeSubMenu, 'move': 'show'},
                                             function(){
+                                                if(isClosing){
+                                                    link.parent().removeClass(loading).removeClass(activeMenu);
+                                                    return;
+                                                }
                                                 $j('.' + loading).removeClass(loading);
                                                 if(!submenu.length){
                                                     activeHref = link.attr('href');
@@ -162,6 +178,20 @@ $j(document).ready(function(){
                         return false;
                     });
                 }
+            },
+
+            /**
+             * Back button
+             */
+            backBtnObsv: function(){
+                backBtn.off('click');
+                backBtn.on('click', function(){
+                    if(activeHref){
+                        self.updateContent(activeHref, {'back' : 1});
+                    }
+                    backBtn.hide();
+                    return false;
+                });
             },
 
             /**
@@ -215,7 +245,7 @@ $j(document).ready(function(){
 
                     // Main content
                     if(type == 'main' && content['main'].length){
-                        $j('.detail-box').hide('fade', {}, 400);
+                        $j('.detail-box').hide('fade', {}, 300);
                         if(!option.back){
                             $j('#content-panel').remove(); // Need to remove and create the #content-panel to apply scroll bar
 
@@ -226,7 +256,10 @@ $j(document).ready(function(){
                             if($j('.active-sub-menu').length){
                                 contentPanel.css('left', $j('.active-sub-menu').outerWidth() + $j('#main-panel').outerWidth());
                             }
-                            contentPanel.addClass('active-panel').show('slide', {'direction': 'left'}, 800);
+                            contentPanel.addClass('active-panel');
+                            if(!isClosing){
+                                contentPanel.show('slide', {'direction': 'left'}, 500);
+                            }
                             self.applyContentScrollbar();
                             self.imageContentObsv();
                             self.imageListObsv();
@@ -243,19 +276,19 @@ $j(document).ready(function(){
                             boxPanel = $j('<div class="detail-box" />');
 
                         if($j('.detail-box').length){
-                            $j('.detail-box').hide('fade', {}, 400, function(){
+                            $j('.detail-box').hide('fade', {}, 300, function(){
                                 $j('.detail-box').remove();
                                 container.append(boxPanel.hide().html(subHtml));
-                                boxPanel.show('fade', {}, 800, self.boxNav);
+                                boxPanel.show('fade', {}, 600, self.boxNav);
                                 self.applyContentScrollbar();
                             });
                         }else{
                             container.append(boxPanel.hide().html(subHtml));
-                            boxPanel.show('fade', {}, 800, self.boxNav);
+                            boxPanel.show('fade', {}, 600, self.boxNav);
                             self.applyContentScrollbar();
                         }
                         if(activeHref){
-                            backBtn.show('fade', {}, 200);
+                            backBtn.show('fade', {}, 300);
                         }
                         $j('#main-panel .close').trigger('click');
                     }
@@ -270,28 +303,38 @@ $j(document).ready(function(){
                             container.append(content['background'].hide());
                             self.customBackgroundObsv();
                             if(bg.length){
-                                bg.hide('fade', {}, 400, function(){
+                                bg.hide('fade', {}, 300, function(){
                                     bg.remove();
-                                    content['background'].show('fade', {}, 1000);
+                                    content['background'].show('fade', {}, 600);
+                                });
+                            }else if(slider.length){
+                                slider.hide('fade', {}, 300, function(){
+                                    bg.remove();
+                                    content['background'].show('fade', {}, 600);
                                 });
                             }else{
-                                content['background'].show('fade', {}, 1000);
+                                content['background'].show('fade', {}, 600);
                             }
                         }
+                    }else{
+                        $j('.custom-bg').hide('fade', {}, 300, function(){
+                            $j('.custom-bg').remove();
+                            slider.show('fade', {}, 300);
+                        });
                     }
 
                     // bullet
                     if($j('.bullet').length){
-                        $j('.bullet').hide('fade', {}, 400, function(){
+                        $j('.bullet').hide('fade', {}, 300, function(){
                             $j('.bullet').remove();
                             if(content['bullet'].length){
                                 container.append(content['bullet']);
-                                content['bullet'].show('fade', {}, 800, self.bulletObsv);
+                                content['bullet'].show('fade', {}, 600, self.bulletObsv);
                             }
                         });
                     }else if(content['bullet'].length){
                         container.append(content['bullet']);
-                        content['bullet'].show('fade', {}, 800, self.bulletObsv);
+                        content['bullet'].show('fade', {}, 600, self.bulletObsv);
                     }
 
                 }catch(err){ /*console.log(err)*/ }
@@ -479,6 +522,24 @@ $j(document).ready(function(){
     activeHref = CONTENT[initHref].type == 'main' ? initHref : '';
 
     /******************************************************
+     * Add slider
+     */
+    //Slider
+    $j('#slider').nivoSlider({
+        effect: 'fade', // Specify sets like: 'fold,fade,sliceDown'
+        slices: 1, // For slice animations
+        boxCols: 1, // For box animations
+        boxRows: 1, // For box animations
+        animSpeed: 500, // Slide transition speed
+        pauseTime: 5000, // How long each slide will show
+        pauseOnHover: false, // Stop animation while hovering
+        directionNav: false // Next & Prev navigation
+    });
+    if(wrapper.find('.custom-bg').length){
+        slider.hide();
+    }
+
+    /******************************************************
      * Observe/apply to dom elements
      */
     // Scrollbar
@@ -486,14 +547,10 @@ $j(document).ready(function(){
 
     // Main Navigation
     self.showMenuObsv(openBtn);
-    self.showMenuObsv(backBtn, function(){
-        if(activeHref){
-            self.updateContent(activeHref, {'back' : 1});
-            backBtn.hide();
-        }
-    });
     self.hideMenuObsv(closeBtn);
+    self.hideMenuObsv(slider);
     self.menuPanelObsv();
+    self.backBtnObsv();
 
     // Background Navigation
     self.imageContentObsv();

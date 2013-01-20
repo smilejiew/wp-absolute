@@ -86,10 +86,10 @@ if(count($parent) == 1 || (count($parent) == 0 && count($children) == 0) ):
                 ?>
                     <ul id="detail-nav">
                       <li id="detail-nav-next" <?php echo !$next ? 'class="invisible"' : '' ?>>
-                          <a href="<?php echo $next ? get_permalink( $next->ID ) : '#' ?>"><span>next</span></a>
+                          <a href="<?php echo $next ? get_permalink( $next->ID ) : '#' ?>"><span>&raquo;</span></a>
                       </li>
                       <li id="detail-nav-back" <?php echo !$prev ? 'class="invisible"' : '' ?>>
-                          <a href="<?php echo $prev ? get_permalink( $prev->ID ) : '#' ?>"><span>prev</span></a>
+                          <a href="<?php echo $prev ? get_permalink( $prev->ID ) : '#' ?>"><span>&laquo;</span></a>
                       </li>
                     </ul>
                 <?php endif ?>

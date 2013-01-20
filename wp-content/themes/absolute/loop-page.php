@@ -38,16 +38,3 @@
         <?php endwhile; // end of the loop. ?>
     </div></div>
 </div>
-
-<?php
-/* Bullet
- * TODO: 1) List all the Bullet in this page
- * TODO: 2) Apply top and left position in style attribute
- */
-?>
-<a href="" class="bullet" style="top:200px;left:800px;">
-  <span>bullet 1</span>
-</a>
-<a href="" class="bullet" style="top:350px;left:700px;">
-  <span>bullet 1</span>
-</a>

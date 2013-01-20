@@ -531,6 +531,7 @@ endif;
         wp_register_style('my_theme_wysiwyg', $uri . '/wysiwyg.css', array('my_theme_style'), '1.0', 'all');
         wp_register_style('my_theme_ie8', $uri . '/ie8.css', array('my_theme_style'), '1.0', 'all');
         wp_register_style('my_theme_scrollbar', $uri . '/script/scrollbar/jquery.mCustomScrollbar.css', array(), '1.0', 'screen');
+        wp_register_style('my_theme_slider', $uri . '/script/slider/default.css', array(), '1.3');
 
         // Adding IE conditional comment
         global $wp_styles;
@@ -546,6 +547,7 @@ endif;
         wp_enqueue_style('my_theme_wysiwyg');
         wp_enqueue_style('my_theme_ie8');
         wp_enqueue_style('my_theme_scrollbar');
+        wp_enqueue_style('my_theme_slider');
     }
     add_action('wp_print_styles', 'my_theme_style');
 
@@ -556,6 +558,7 @@ endif;
         //Register styles for later use
         $themeuri = get_template_directory_uri();
         wp_enqueue_script('jquery-ui', $themeuri . '/script/jquery-ui-1.9.1.custom.min.js', array('jquery'), '1.9.1');
+        wp_enqueue_script('slider', $themeuri . '/script/slider/jquery.nivo.slider.pack.js', array('jquery-ui'), '3.2');
         wp_enqueue_script('scrollbar_mousewheel', $themeuri . '/script/scrollbar/jquery.mousewheel.min.js', array('jquery-ui'), '3.0.6');
         wp_enqueue_script('scrollbar_custom', $themeuri . '/script/scrollbar/jquery.mCustomScrollbar.js', array('scrollbar_mousewheel'), '2.1');
         wp_enqueue_script('my_script', $themeuri . '/script/script.js', array('scrollbar_custom'), '1.0');
@@ -586,6 +589,20 @@ endif;
         $form_fields["custom_src"]["input"] = "text";
         $form_fields["custom_src"]["value"] = get_post_meta($post->ID, "_custom_src", true);
         $form_fields["custom_src"]["helps"] = "Put url that the image will link to.";
+
+        $form_fields["custom_banner"]["label"] = __("Image Rotation");
+        $form_fields["custom_banner"]["input"] = "html";
+        $form_fields["custom_banner"]["html"]  = "<p class='help' style='padding:5px'><input type='checkbox'"
+            . " value='1' name='attachments[{$post->ID}][custom_banner]'"
+            . " id='attachments[{$post->ID}][custom_banner]'"
+            . (get_post_meta($post->ID, "_custom_banner", true) ? " checked" : '')
+            . " /> Check for showing this image in the image rotation </p>"
+            . "<p class='help' style='padding:0px'><input type='text'"
+            . " value='" . get_post_meta($post->ID, "_custom_banner_order", true) . "'"
+            . " name='attachments[{$post->ID}][custom_banner_order]'"
+            . " id='attachments[{$post->ID}][custom_banner_order]'"
+            . " style='width:30px' /> Order of image rotation </p>";
+
         return $form_fields;
     }
     add_filter("attachment_fields_to_edit", "my_image_attachment_fields_to_edit", null, 2);
@@ -601,6 +618,10 @@ endif;
         if( isset($attachment['custom_src']) ) {
             update_post_meta($post['ID'], '_custom_src', $attachment['custom_src']);
         }
+        if( isset($attachment['custom_banner_order']) ) {
+            update_post_meta($post['ID'], '_custom_banner_order', is_numeric($attachment['custom_banner_order']) ? $attachment['custom_banner_order'] : 10);
+        }
+        update_post_meta($post['ID'], '_custom_banner', $attachment['custom_banner'] || 0);
         return $post;
     }
     add_filter("attachment_fields_to_save", "my_image_attachment_fields_to_save", null, 2);
