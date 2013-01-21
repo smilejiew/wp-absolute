@@ -7,7 +7,6 @@
 <?php
     rewind_posts();
 
-    /* Check if this is a post or page, if it has a thumbnail. */
     if ( is_singular() && current_theme_supports( 'post-thumbnails' ) && has_post_thumbnail( $post->ID )) :
         // Houston, we have a new header image!
         $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
@@ -16,7 +15,10 @@
         if($custom_fields['_custom_src']):
             $attr['data-href'] = $custom_fields['_custom_src'][0];
         endif;
-        echo '<div class="custom-bg">' . get_the_post_thumbnail( $post->ID, 'full', $attr ) . '</div>';
+        $bg = get_the_post_thumbnail( $post->ID, 'full', $attr );
+        if ($bg):
+            echo '<div class="custom-bg">' . $bg . '</div>';
+        endif;
     endif;
 
     /* Image rotation */
