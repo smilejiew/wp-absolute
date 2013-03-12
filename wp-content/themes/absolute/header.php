@@ -95,6 +95,14 @@
                  */
                     wp_nav_menu( array( 'menu_id' => 'main-menu', 'container_class' => 'menu', 'theme_location' => 'primary', 'depth' => 2 ) );
                 ?>
+                <div id="nav-social">
+                    <ul>
+                        <li><a href="http://www.facebook.com/" title="facebook" class="nav-fb"><span>facebook</span></a></li>
+                        <li><a href="https://twitter.com/" title="twitter" class="nav-tw"><span>twitter</span></a></li>
+                        <li><a href="https://plus.google.com/" title="google plus" class="nav-plus"><span>google plus</span></a></li>
+                        <li><a href="<?php echo home_url( '/' ); ?>?feed=rss" title="rss feed" class="nav-rss"><span>feed</span></a></li>
+                    </ul>
+                </div>
             </div>
             <a href="#" class="close"><span>close</span></a>
         </div>

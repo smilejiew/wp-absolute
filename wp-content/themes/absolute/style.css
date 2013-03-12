@@ -242,6 +242,34 @@ a, .btn, .custom-bg{
   z-index: 1;
 }
 
+#nav-social{
+  position: absolute;
+  left: 20px;
+  bottom: 40px;
+}
+#nav-social li{
+  float: left;
+  margin: 0 5px;
+}
+#nav-social li a{
+  display: block;
+  width: 37px;
+  height: 36px;
+  background: url("images/icon-social.png") top left no-repeat;
+}
+#nav-social li a.nav-tw{
+  background-position: -37px 0px;
+}
+#nav-social li a.nav-plus{
+  background-position: -74px 0px;
+}
+#nav-social li a.nav-rss{
+  background-position: -111px 0px;
+}
+#nav-social li a span{
+  display: none;
+}
+
 /* [D-4-05] Content
 -------------------------------- */
 /* h1 */
