@@ -291,6 +291,15 @@ $j(document).ready(function(){
                             backBtn.show('fade', {}, 300);
                         }
                         $j('#main-panel .close').trigger('click');
+
+                    // Others
+                    }else{
+                        if($j('.detail-box').length){
+                            $j('.detail-box').hide('fade', {}, 300, function(){
+                                $j('.detail-box').remove();
+                            });
+                        }
+                        backBtn.hide('fade', {}, 300);
                     }
 
                     // background
