@@ -94,7 +94,7 @@ a, .btn, .custom-bg{
   position: relative;
 }
 #site-title > a{
-  background-image: url("images/logo-white.png");
+  background-image: url("images/logo.png");
 }
 /* [D-3] Footer
 -------------------------------- */
@@ -249,22 +249,22 @@ a, .btn, .custom-bg{
 }
 #nav-social li{
   float: left;
-  margin: 0 5px;
+  margin: 0 8px;
 }
 #nav-social li a{
   display: block;
-  width: 37px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   background: url("images/icon-social.png") top left no-repeat;
 }
 #nav-social li a.nav-tw{
-  background-position: -37px 0px;
+  background-position: -32px 0px;
 }
 #nav-social li a.nav-plus{
-  background-position: -74px 0px;
+  background-position: -64px 0px;
 }
 #nav-social li a.nav-rss{
-  background-position: -111px 0px;
+  background-position: -96px 0px;
 }
 #nav-social li a span{
   display: none;

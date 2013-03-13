@@ -97,10 +97,10 @@
                 ?>
                 <div id="nav-social">
                     <ul>
-                        <li><a href="http://www.facebook.com/" title="facebook" class="nav-fb"><span>facebook</span></a></li>
-                        <li><a href="https://twitter.com/" title="twitter" class="nav-tw"><span>twitter</span></a></li>
-                        <li><a href="https://plus.google.com/" title="google plus" class="nav-plus"><span>google plus</span></a></li>
-                        <li><a href="<?php echo home_url( '/' ); ?>?feed=rss" title="rss feed" class="nav-rss"><span>feed</span></a></li>
+                        <li><a href="http://www.facebook.com/" title="facebook" target="_blank" class="nav-fb"><span>facebook</span></a></li>
+                        <li><a href="https://twitter.com/" title="twitter" target="_blank" class="nav-tw"><span>twitter</span></a></li>
+                        <li><a href="https://plus.google.com/" title="google plus" target="_blank" class="nav-plus"><span>google plus</span></a></li>
+                        <li><a href="<?php echo home_url( '/' ); ?>?feed=rss" target="_blank" title="rss feed" class="nav-rss"><span>feed</span></a></li>
                     </ul>
                 </div>
             </div>
