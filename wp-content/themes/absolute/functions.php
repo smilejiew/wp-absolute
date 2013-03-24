@@ -585,11 +585,13 @@ endif;
      * @return array
      */
     function my_image_attachment_fields_to_edit($form_fields, $post) {
+        /* External link */
         $form_fields["custom_src"]["label"] = __("Link to");
         $form_fields["custom_src"]["input"] = "text";
         $form_fields["custom_src"]["value"] = get_post_meta($post->ID, "_custom_src", true);
         $form_fields["custom_src"]["helps"] = "Put url that the image will link to.";
 
+        /* Rotation banner */
         $form_fields["custom_banner"]["label"] = __("Image Rotation");
         $form_fields["custom_banner"]["input"] = "html";
         $form_fields["custom_banner"]["html"]  = "<p class='help' style='padding:5px'><input type='checkbox'"
@@ -603,6 +605,26 @@ endif;
             . " id='attachments[{$post->ID}][custom_banner_order]'"
             . " style='width:30px' /> Order of image rotation </p>";
 
+        /* Group name (use in template contact us) */
+        $form_fields["custom_group"]["label"] = __("Group name");
+        $form_fields["custom_group"]["input"] = "html";
+        $form_fields["custom_group"]["html"]  =
+            // Help text
+            "<p class='help' style='padding:5px 0'>Group name is using for the contact us template only. </p>"
+
+            // Group name
+            . "<p class='help' style='padding:5px 0'>Name: <br /><input type='text'"
+            . " value='" . get_post_meta($post->ID, "_custom_group", true) . "'"
+            . " name='attachments[{$post->ID}][custom_group]'"
+            . " id='attachments[{$post->ID}][custom_group]' /></p>"
+
+            // Group name color
+            . "<p class='help' style='padding:5px 0'>Color: <br /><input type='text'"
+            . " value='" . get_post_meta($post->ID, "_custom_group_color", true) . "'"
+            . " name='attachments[{$post->ID}][custom_group_color]'"
+            . " id='attachments[{$post->ID}][custom_group_color]'"
+            . " style='width:70px' /> Eg. red, green, #000000</p>";
+
         return $form_fields;
     }
     add_filter("attachment_fields_to_edit", "my_image_attachment_fields_to_edit", null, 2);
@@ -615,13 +637,26 @@ endif;
      * @return array
      */
     function my_image_attachment_fields_to_save($post, $attachment) {
+        /* External link */
         if( isset($attachment['custom_src']) ) {
             update_post_meta($post['ID'], '_custom_src', $attachment['custom_src']);
         }
+
+        /* Rotation banner */
         if( isset($attachment['custom_banner_order']) ) {
             update_post_meta($post['ID'], '_custom_banner_order', is_numeric($attachment['custom_banner_order']) ? $attachment['custom_banner_order'] : 10);
         }
         update_post_meta($post['ID'], '_custom_banner', $attachment['custom_banner'] || 0);
+
+        /* Group name (use in template contact us) */
+        // name
+        $attachment['custom_group'] = isset($attachment['custom_group']) ? $attachment['custom_group'] : '';
+        update_post_meta($post['ID'], '_custom_group', $attachment['custom_group']);
+
+        // color
+        $attachment['custom_group_color'] = isset($attachment['custom_group_color']) ? $attachment['custom_group_color'] : '';
+        update_post_meta($post['ID'], '_custom_group_color', $attachment['custom_group_color']);
+
         return $post;
     }
     add_filter("attachment_fields_to_save", "my_image_attachment_fields_to_save", null, 2);

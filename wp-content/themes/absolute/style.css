@@ -295,6 +295,32 @@ a, .btn, .custom-bg{
   text-align: right;
 }
 
+/* showroom list */
+.showroom{
+  margin-bottom: 15px;
+}
+.showroom h2{
+  color: #333333;
+  font-weight: normal;
+  padding: 0 0 10px;
+  text-transform: uppercase;
+  font-style: italic;
+}
+.showroom h3{
+  font-size: 1.1em;
+}
+.showroom ul{
+  margin: 5px 5px 5px 10px;
+}
+.showroom a{
+  color: #333333;
+  font-style: italic;
+  font-size: 0.9em;
+}
+.showroom a:hover, .showroom a:focus{
+  color: #6699FF;
+}
+
 /* [D-4-06] Bullet
 -------------------------------- */
 .bullet{
