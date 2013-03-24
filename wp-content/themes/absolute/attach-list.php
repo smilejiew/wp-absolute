@@ -9,7 +9,7 @@ Template Name: Contact us
 $page_id  = get_the_ID();
 $attachments = get_posts(array(
     'post_type' => 'attachment',
-    'numberposts' => null,
+    'numberposts' => -1,
     'post_status' => null,
     'post_parent' => $page_id
 ));
