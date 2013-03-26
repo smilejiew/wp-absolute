@@ -587,9 +587,12 @@ endif;
     function my_image_attachment_fields_to_edit($form_fields, $post) {
         /* External link */
         $form_fields["custom_src"]["label"] = __("Link to");
-        $form_fields["custom_src"]["input"] = "text";
-        $form_fields["custom_src"]["value"] = get_post_meta($post->ID, "_custom_src", true);
-        $form_fields["custom_src"]["helps"] = "Put url that the image will link to.";
+        $form_fields["custom_src"]["input"] = "html";
+        $form_fields["custom_src"]["html"]  = "<input type='text'"
+            . " value='" . get_post_meta($post->ID, "_custom_src", true) . "'"
+            . " name='attachments[{$post->ID}][custom_src]'"
+            . " id='attachments[{$post->ID}][custom_src]' "
+            . " style='width:99%;' /><p class='help'>Put url that the image will link to.</p>";
 
         /* Rotation banner */
         $form_fields["custom_banner"]["label"] = __("Image Rotation");
@@ -610,20 +613,28 @@ endif;
         $form_fields["custom_group"]["input"] = "html";
         $form_fields["custom_group"]["html"]  =
             // Help text
-            "<p class='help' style='padding:5px 0'>Group name is using for the contact us template only. </p>"
+            "<p>Group name is using for the contact us template only. </p>"
 
             // Group name
-            . "<p class='help' style='padding:5px 0'>Name: <br /><input type='text'"
+            . "<p><label>Name:</label><br /><input type='text'"
             . " value='" . get_post_meta($post->ID, "_custom_group", true) . "'"
             . " name='attachments[{$post->ID}][custom_group]'"
-            . " id='attachments[{$post->ID}][custom_group]' /></p>"
+            . " id='attachments[{$post->ID}][custom_group]' "
+            . " style='width:99%;' /></p>"
+
+            // Group name
+            . "<p><label>Image url:</label><br /><input type='text'"
+            . " value='" . get_post_meta($post->ID, "_custom_group_image", true) . "'"
+            . " name='attachments[{$post->ID}][custom_group_image]'"
+            . " id='attachments[{$post->ID}][custom_group_image]' "
+            . " style='width:99%;' /></p>"
 
             // Group name color
-            . "<p class='help' style='padding:5px 0'>Color: <br /><input type='text'"
+            . "<p><label>Color: (Eg. red, #000000)</label><br /><input type='text'"
             . " value='" . get_post_meta($post->ID, "_custom_group_color", true) . "'"
             . " name='attachments[{$post->ID}][custom_group_color]'"
             . " id='attachments[{$post->ID}][custom_group_color]'"
-            . " style='width:70px' /> Eg. red, green, #000000</p>";
+            . " style='width:80px' /></p>";
 
         return $form_fields;
     }
@@ -653,7 +664,11 @@ endif;
         $attachment['custom_group'] = isset($attachment['custom_group']) ? $attachment['custom_group'] : '';
         update_post_meta($post['ID'], '_custom_group', $attachment['custom_group']);
 
-        // color
+        // Image
+        $attachment['custom_group_image'] = isset($attachment['custom_group_image']) ? $attachment['custom_group_image'] : '';
+        update_post_meta($post['ID'], '_custom_group_image', $attachment['custom_group_image']);
+
+        // Color
         $attachment['custom_group_color'] = isset($attachment['custom_group_color']) ? $attachment['custom_group_color'] : '';
         update_post_meta($post['ID'], '_custom_group_color', $attachment['custom_group_color']);
 

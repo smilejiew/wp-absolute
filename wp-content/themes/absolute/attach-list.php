@@ -20,10 +20,13 @@ foreach ($attachments as $attachment) {
                    ? $custom_fields['_custom_group'][0] : 'Others';
     $color         = isset($custom_fields['_custom_group_color'][0]) && $custom_fields['_custom_group_color'][0]
                    ? $custom_fields['_custom_group_color'][0] : false;
+    $image         = isset($custom_fields['_custom_group_image'][0]) && $custom_fields['_custom_group_image'][0]
+                   ? $custom_fields['_custom_group_image'][0] : false;
 
     if ( !isset($image_group[$name]) ) {
-        $image_group[$name] = array('color' => false, 'items' => array());
+        $image_group[$name] = array('image' => false,'color' => false, 'items' => array());
     }
+    $image_group[$name]['image']   = $image ? $image : $image_group[$name]['image'];
     $image_group[$name]['color']   = $color ? $color : $image_group[$name]['color'];
     $image_group[$name]['items'][] = $attachment;
 }
@@ -37,9 +40,16 @@ if ( have_posts() ) while ( have_posts() ) : the_post();
                 <?php if ($image_group): ?>
                     <div class="showroom">
                         <h2>Show room</h2>
-                        <?php foreach ($image_group as $key => $value): ?>
-                            <?php $style = $value['color'] ? 'style="color:' . $value['color'] . '"' : '' ?>
-                            <h3 <?php echo $style ?>><?php echo $key ?></h3>
+                        <?php foreach ($image_group as $key => $value):
+                                if ($value['color'] || $value['image']) {
+                                    $style = $value['color'] ? 'style="color:' . $value['color'] . '"' : '';
+                                    $name  = $value['image'] ? '<img href="' . $value['image'] . '" alt="' . $key . '" title="' . $key . '">' : $key;
+                                } else {
+                                    $style = '';
+                                    $name  = $key;
+                                }
+                            ?>
+                            <h3 <?php echo $style ?>><?php echo $name ?></h3>
                             <ul class="image-list">
                                 <?php foreach ($value['items'] as $attachment):
                                         $document_title = apply_filters('the_title', $attachment->post_title);
