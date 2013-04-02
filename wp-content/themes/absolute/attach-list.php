@@ -43,7 +43,7 @@ if ( have_posts() ) while ( have_posts() ) : the_post();
                         <?php foreach ($image_group as $key => $value):
                                 if ($value['color'] || $value['image']) {
                                     $style = $value['color'] ? 'style="color:' . $value['color'] . '"' : '';
-                                    $name  = $value['image'] ? '<img href="' . $value['image'] . '" alt="' . $key . '" title="' . $key . '">' : $key;
+                                    $name  = $value['image'] ? '<img src="' . $value['image'] . '" alt="' . $key . '" title="' . $key . '">' : $key;
                                 } else {
                                     $style = '';
                                     $name  = $key;
